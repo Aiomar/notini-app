@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="flex justify-center">
+      <main className="flex justify-center ">
         <LSIP1 />
       </main>
       <Footer />
