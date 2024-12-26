@@ -20,9 +20,35 @@ export default function Form() {
       data[key] = value.toString();
     });
 
+    //* liste de coefficient de License SI P1
+    const coefLsiP1 = {
+      Algebre: 1.5,
+      Analyse: 1.5,
+      "Algorithmique et structure de données": 2,
+      "Atelier programmation 1": 1.5,
+      "Système d'exploitation 1": 1.5,
+      "Systèmes Logiques & Architecture des ordinateurs": 2,
+      "Logique formelle": 1.5,
+      "Technologies Multimédias": 1.5,
+      Anglais: 1,
+      "Techniques de communication 1": 1,
+    };
+
+    // calcule total de coefficent
+    let totalCoeff = 0;
+    for (const [, coef] of Object.entries(coefLsiP1)) {
+      totalCoeff += coef;
+    }
+    console.log("total coefficient = ", totalCoeff); //!debug
+
     //calcule moyenne d une matiere
-    const calcMoyMatiere = (TD: number, DS: number, EX: number): number => {
-      return (TD * 10 + DS * 20 + EX * 70) / 100;
+    const calcMoyMatiere = (
+      TD: number,
+      DS: number,
+      EX: number,
+      coef: number
+    ): number => {
+      return ((TD * 10 + DS * 20 + EX * 70) / 100) * coef;
     };
 
     // array to save moyenne d une note
@@ -31,18 +57,31 @@ export default function Form() {
     // Convert object into an array of entries
     const entries = Object.entries(data);
 
+    //* calcule de moyenne d une matiere
     for (let i = 0; i < entries.length; i += 3) {
       const matiere: [string, string][] = entries.slice(i, i + 3);
+
+      //* extraire le nom de matiere en effacent le  2 char finale du ch AlgebreTD => Algebre | AnalyseTD => Analyse
+      const nomMatiere = matiere[0][0].substring(0, matiere[0][0].length - 2);
+
+      //* determiner la coefficient d une matiere | parcours sur l objet coefLsiP1
+      let coefficent = 1;
+      for (const [mat, coeff] of Object.entries(coefLsiP1)) {
+        if (nomMatiere === mat) {
+          coefficent = coeff;
+          break;
+        }
+      }
 
       //* calculer le moyenne d une matiere a l aide d appel fonction calcMoyMatiere()
       const moyMatiere: number = calcMoyMatiere(
         parseFloat(matiere[0][1]),
         parseFloat(matiere[1][1]),
-        parseFloat(matiere[2][1])
+        parseFloat(matiere[2][1]),
+        coefficent
       );
 
       //* ajouter la moyenne d une matiere a l table des moyenne est incrimenter k avec 1
-      const nomMatiere = matiere[0][0].substring(0, matiere[0][0].length - 2); // extraire le nom de matiere en eff 2 char finale
       moyenneMatieres.push([nomMatiere, moyMatiere]);
     }
 
@@ -55,26 +94,6 @@ export default function Form() {
     console.log("total des moyenne : ", totalMoy); //!debug
 
     console.log(data); //!debug
-
-    //liste de coefficient de License SI P1
-    const coefLsiP1 = {
-      Algebre: 1.5,
-      Analyse: 1.5,
-      "Algorithmique et structure de données": 2,
-      "Atelier programmation1": 1.5,
-      "Système d'exploitation 1": 1.5,
-      "Systèmes Logiques & Architecture des ordinateurs": 2,
-      "Logique formelle": 1.5,
-      "Technologies Multimédias": 1.5,
-      Anglais: 1,
-      "Techniques de communication 1": 1,
-    };
-
-    // calcule total de coefficent
-    let totalCoeff = 0;
-    for (let [matiere, coef] of Object.entries(coefLsiP1)) {
-      totalCoeff += coef;
-    }
 
     //* calcule de moyenne
     const moy = totalMoy / totalCoeff;
