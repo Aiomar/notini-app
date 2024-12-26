@@ -1,6 +1,14 @@
 export default function Header() {
   return (
     <header className="w-full flex items-center justify-center h-24 bg-gray-800 fixed z-50">
+      <div className="mb-6 md:mb-0 float-start">
+        <a href="" className="flex items-center">
+          <img src="/logo.svg" className="h-10 me-3 rounded-full" alt="" />
+          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+            Notini{" "}
+          </span>
+        </a>
+      </div>
       <nav className="bg-white border-gray-200 dark:bg-gray-800">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <button

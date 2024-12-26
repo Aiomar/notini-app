@@ -1,7 +1,7 @@
 import InputFields from "./component/InputFields";
 import React, { useRef, useState } from "react";
 
-export default function Form() {
+export default function LSIP1() {
   const [moyenne, setMoyenne] = useState("");
 
   const formRef = useRef<HTMLFormElement>(null);
@@ -65,10 +65,10 @@ export default function Form() {
       const nomMatiere = matiere[0][0].substring(0, matiere[0][0].length - 2);
 
       //* determiner la coefficient d une matiere | parcours sur l objet coefLsiP1
-      let coefficent = 1;
+      let coefficient = 1;
       for (const [mat, coeff] of Object.entries(coefLsiP1)) {
         if (nomMatiere === mat) {
-          coefficent = coeff;
+          coefficient = coeff;
           break;
         }
       }
@@ -78,7 +78,7 @@ export default function Form() {
         parseFloat(matiere[0][1]),
         parseFloat(matiere[1][1]),
         parseFloat(matiere[2][1]),
-        coefficent
+        coefficient
       );
 
       //* ajouter la moyenne d une matiere a l table des moyenne est incrimenter k avec 1
@@ -104,68 +104,72 @@ export default function Form() {
   //todo : Ensure that empty fields are not included in the average calculation.
   //todo : Exclude coefficients for empty fields from the total coefficient calculation.
 
-
   return (
-    <form
-      ref={formRef}
-      onSubmit={handleSubmit}
-      className="flex flex-row  p-5 w-full"
-    >
-      <div className="flex flex-col ">
-        <InputFields title={"Algebre"} type={"TD"} />
-        <InputFields title={"Analyse"} type={"TD"} />
-        <InputFields
-          title={"Algorithmique et structure de données"}
-          type={"TD"}
-        />
-        <InputFields title={"Techniques de communication 1"} type={"TD"} />
-      </div>
-      <div className="flex flex-col">
-        <InputFields title={"Atelier programmation 1"} type={"TD"} />
-        <InputFields title={"Système d'exploitation 1"} type={"TD"} />
-        <InputFields
-          title={"Systèmes Logiques & Architecture des ordinateurs"}
-          type={"TD"}
-        />
-        <div className="flex flex-col items-center  w-96 ml-5 p-5">
-          <button
-            type="submit"
-            className="w-56 focus:outline-none text-white bg-green-700 hover:bg-green-800
+    <section className="flex-col items-center pt-28 p-5">
+      <label htmlFor="Form" className="text-xl">
+        1ere LSI P1
+      </label>
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        className="flex flex-row  p-5 w-full"
+      >
+        <div className="flex flex-col ">
+          <InputFields title={"Algebre"} type={"TD"} />
+          <InputFields title={"Analyse"} type={"TD"} />
+          <InputFields
+            title={"Algorithmique et structure de données"}
+            type={"TD"}
+          />
+          <InputFields title={"Techniques de communication 1"} type={"TD"} />
+        </div>
+        <div className="flex flex-col">
+          <InputFields title={"Atelier programmation 1"} type={"TD"} />
+          <InputFields title={"Système d'exploitation 1"} type={"TD"} />
+          <InputFields
+            title={"Systèmes Logiques & Architecture des ordinateurs"}
+            type={"TD"}
+          />
+          <div className="flex flex-col items-center  w-96 ml-5 p-5">
+            <button
+              type="submit"
+              className="w-56 focus:outline-none text-white bg-green-700 hover:bg-green-800
              focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5
               me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            Calculer Moyenne
-          </button>
-          <div className="relative">
-            <input
-              type="text"
-              id="disabled_outlined"
-              className="block px-2.5 pb-2.5 pt-4 w-full text-xl text-gray-900 bg-transparent
+            >
+              Calculer Moyenne
+            </button>
+            <div className="relative">
+              <input
+                type="text"
+                id="disabled_outlined"
+                className="block px-2.5 pb-2.5 pt-4 w-full text-xl text-gray-900 bg-transparent
               rounded-lg border-1 border-gray-300 appearance-none dark:text-white
               focus:outline-none focus:ring-0
             focus:border-blue-600 peer"
-              placeholder=" "
-              disabled
-            />
-            <label
-              htmlFor="disabled_outlined"
-              className="absolute text-xl text-gray-400 duration-300 transform -translate-y-4
+                placeholder=" "
+                disabled
+              />
+              <label
+                htmlFor="disabled_outlined"
+                className="absolute text-xl text-gray-400 duration-300 transform -translate-y-4
               scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600
               peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
               peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4
               start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-            >
-              Votre Moyenne est : <p className="text-black">{moyenne}</p>
-            </label>
+              >
+                Votre Moyenne est : <p className="text-black">{moyenne}</p>
+              </label>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col">
-        <InputFields title={"Logique formelle"} type={"TD"} />
-        <InputFields title={"Technologies Multimédias"} type={"TD"} />
-        <InputFields title={"Anglais 1"} type={"TD"} />
-      </div>
-      <div className="flex flex-col "></div>
-    </form>
+        <div className="flex flex-col">
+          <InputFields title={"Logique formelle"} type={"TD"} />
+          <InputFields title={"Technologies Multimédias"} type={"TD"} />
+          <InputFields title={"Anglais 1"} type={"TD"} />
+        </div>
+        <div className="flex flex-col "></div>
+      </form>
+    </section>
   );
 }

@@ -1,22 +1,28 @@
-export default function Fotter() {
+export default function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-800">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <a href="" className="flex items-center">
-              <img src="" className="h-8 me-3" alt="" />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
+              <img src="/logo.svg" className="h-16 me-3 rounded-full" alt="" />
+              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Notini </span>
             </a>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Resources
+                Recources
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="" className="hover:underline"></a>
+                  <a
+                    href="https://isigk.rnu.tn/fra/s2467/pages/395/Computer-Science-GLSI-R%C3%A9vision/s174"
+                    className="hover:underline"
+                    target="_blank"
+                  >
+                    isigk
+                  </a>
                 </li>
                 <li>
                   <a href="" className="hover:underline"></a>
@@ -25,23 +31,15 @@ export default function Fotter() {
             </div>
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Follow us
+                Follow me
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
                   <a
-                    href="https://github.com/themesberg/flowbite"
+                    href="https://github.com/Aiomar"
                     className="hover:underline "
                   >
                     Github
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://discord.gg/4eeurUVvTy"
-                    className="hover:underline"
-                  >
-                    Discord
                   </a>
                 </li>
               </ul>
@@ -73,7 +71,7 @@ export default function Fotter() {
               href="https://omaraidiportfolio.vercel.app/#Home"
               className="hover:underline"
             >
-            Omar Aidi
+              Omar Aidi
             </a>
             . All Rights Reserved.
           </span>
