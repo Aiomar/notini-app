@@ -97,12 +97,13 @@ export default function Form() {
 
     //* calcule de moyenne
     const moy = totalMoy / totalCoeff;
-    setMoyenne(moy ? moy.toString().substring(0, 4) : "0");
+    setMoyenne(moy ? moy.toString().substring(0, 5) : "0");
   };
 
   //todo : Verify that input values are between 0 and 20.
   //todo : Ensure that empty fields are not included in the average calculation.
   //todo : Exclude coefficients for empty fields from the total coefficient calculation.
+
 
   return (
     <form
