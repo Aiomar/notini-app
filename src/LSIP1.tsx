@@ -7,20 +7,51 @@ export default function LSIP1() {
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // prevent reloading the page after form submition
+    // prevent reloading the page after form submition
+    e.preventDefault();
 
+    // verification if the form is not empty
     if (!formRef.current) return;
 
     //requprer les donner de form en utilisant FormData
     const formData = new FormData(formRef.current);
 
-    // convert FormData to an object
+    //** formData Validation
+    formData.forEach((value, key) => {
+      const matiere: string = key;
+      const note: string = value.toString();
+
+      // verifiy if the input field is empty | dispence dans une matiere
+      if (note != "" && (parseFloat(note) < 0 || parseFloat(note) > 20)) {
+        alert("le champs " + matiere + " doit etre entre 0 et 20");
+        return;
+      }
+    });
+
+    // create a list that holds matier that are empty || we dont need to calculate empty matiere fields
+    const listMat: [string] = [""];
+
+    // verifiy wich input field is empty
+    formData.forEach((value, key) => {
+      const matiere: string = key.substring(0, key.length - 2);
+      const note: string = value.toString();
+
+      //* data Validation
+      // verifiy if the input field is empty | dispence dans une matiere
+      if (!note || note === "") {
+        if (!listMat.includes(matiere)) {
+          listMat.push(matiere);
+        }
+      }
+    });
+
+    // *Convert FormData to an object | FormData : array (convert into)=> object
     const data: Record<string, string> = {};
     formData.forEach((value, key) => {
       data[key] = value.toString();
     });
 
-    //* liste de coefficient de License SI P1
+    //* Object list of  matieres | coefficient of License SI P1
     const coefLsiP1 = {
       Algebre: 1.5,
       Analyse: 1.5,
@@ -30,15 +61,20 @@ export default function LSIP1() {
       "Systèmes Logiques & Architecture des ordinateurs": 2,
       "Logique formelle": 1.5,
       "Technologies Multimédias": 1.5,
-      Anglais: 1,
+      "Anglais 1": 1,
       "Techniques de communication 1": 1,
     };
 
     // calcule total de coefficent
     let totalCoeff = 0;
-    for (const [, coef] of Object.entries(coefLsiP1)) {
+    for (const [matiere, coef] of Object.entries(coefLsiP1)) {
+      //* verifier si le matiere est dans le liste de matiere negligable | this type of matieres does'nt need a moy calc
+      if (listMat.includes(matiere)) {
+        continue;
+      }
       totalCoeff += coef;
     }
+
     console.log("total coefficient = ", totalCoeff); //!debug
 
     //calcule moyenne d une matiere
@@ -64,6 +100,11 @@ export default function LSIP1() {
       //* extraire le nom de matiere en effacent le  2 char finale du ch AlgebreTD => Algebre | AnalyseTD => Analyse
       const nomMatiere = matiere[0][0].substring(0, matiere[0][0].length - 2);
 
+      // verifier si le le matiere est dans la liste des matiere niglegable
+      if (listMat.includes(nomMatiere)) {
+        continue;
+      }
+
       //* determiner la coefficient d une matiere | parcours sur l objet coefLsiP1
       let coefficient = 1;
       for (const [mat, coeff] of Object.entries(coefLsiP1)) {
@@ -81,16 +122,23 @@ export default function LSIP1() {
         coefficient
       );
 
-      //* ajouter la moyenne d une matiere a l table des moyenne est incrimenter k avec 1
+      //* ajouter la moyenne d une matiere a l table des moyenne
       moyenneMatieres.push([nomMatiere, moyMatiere]);
     }
 
     //* calcule totale des moyenne
     let totalMoy = 0;
     for (let i = 0; i < moyenneMatieres.length; i++) {
+      // verifier si le le matiere est dans la liste des matiere niglegable
+      if (listMat.includes(moyenneMatieres[i][0])) {
+        continue;
+      }
+
       totalMoy += moyenneMatieres[i][1];
+
       console.log(moyenneMatieres[i]); //!debug
     }
+
     console.log("total des moyenne : ", totalMoy); //!debug
 
     console.log(data); //!debug
@@ -98,11 +146,9 @@ export default function LSIP1() {
     //* calcule de moyenne
     const moy = totalMoy / totalCoeff;
     setMoyenne(moy ? moy.toString().substring(0, 5) : "0");
-  };
 
-  //todo : Verify that input values are between 0 and 20.
-  //todo : Ensure that empty fields are not included in the average calculation.
-  //todo : Exclude coefficients for empty fields from the total coefficient calculation.
+    console.log("liste des mat negligable : ", listMat); //! debug
+  };
 
   return (
     <section className="flex-col items-center pt-28 p-5">

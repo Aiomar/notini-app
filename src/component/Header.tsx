@@ -1,15 +1,15 @@
 export default function Header() {
   return (
     <header className="w-full flex items-center justify-center h-24 bg-gray-900 fixed z-50 p-4  ">
-      <div className="mb-6 md:mb-0 float-start ml-5">
-        <a href="" className="flex items-center">
-          <img src="/logo.svg" className="h-10 me-3 rounded-full" alt="" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Notini{" "}
-          </span>
-        </a>
-      </div>
-      <nav className="bg-white border-gray-200 dark:bg-gray-900 w-full ml-10">
+      <nav className="flex items-center justify-center bg-white border-gray-200 dark:bg-gray-900 w-full">
+        <div className="md:mb-0 float-start ml-5">
+          <a href="" className="flex items-center">
+            <img src="/logo.svg" className="h-10 me-3 rounded-full" alt="" />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              Notini  {" "}
+            </span>
+          </a>
+        </div>
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <button
             data-collapse-toggle="navbar-default"
@@ -37,11 +37,14 @@ export default function Header() {
               />
             </svg>
           </button>
-          <div className="hidden  md:block md:w-auto" id="navbar-default">
+          <div
+            className="hidden  md:flex md:w-fit md:items-center"
+            id="navbar-default"
+          >
             <ul
               className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg
               bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white
-              dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+              dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 "
             >
               <li>
                 <a
