@@ -6,9 +6,14 @@ export default function LSIP1() {
   const [err, setErr] = useState(["", ""]);
   //* handle note changing to correct value | remove the error
 
-  const handleNoteChange = (value: string) => {
-    if (parseFloat(value) >= 0 && parseFloat(value) <= 20) {
+  const handleNoteChange = (matiere: string, value: string) => {
+    if (value != "" && parseFloat(value) >= 0 && parseFloat(value) <= 20) {
       setErr(["", ""]);
+    } else {
+      setErr([
+        matiere.substring(0, matiere.length - 2), // send the matiere name without DS |TD| EX : AlgebreDS => Algebre
+        "le note de : " + matiere + " doit etre entre 0 et 20",
+      ]);
     }
   };
 
@@ -166,16 +171,16 @@ export default function LSIP1() {
   };
 
   return (
-    <section className="flex-col items-center pt-28 p-5">
-      <label htmlFor="Form" className="text-xl">
-        1ere LSI P1
+    <section className="flex flex-col items-center justify-center mt-28">
+      <label htmlFor="Form" className="text-xl text-center ">
+        1 ére License SI P1
       </label>
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        className="flex flex-row  p-5 w-full"
+        className="flex md:flex-row flex-col  md:w-full"
       >
-        <div className="flex flex-col ">
+        <div className="flex flex-col items-center justify-center md:justify-normal">
           <InputFields
             title={"Algebre"}
             type={"TD"}
@@ -201,7 +206,7 @@ export default function LSIP1() {
             onChange={handleNoteChange}
           />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center justify-center md:justify-normal">
           <InputFields
             title={"Atelier programmation 1"}
             type={"TD"}
@@ -220,40 +225,8 @@ export default function LSIP1() {
             err={err}
             onChange={handleNoteChange}
           />
-          <div className="flex flex-col items-center  w-96 ml-5 p-5">
-            <button
-              type="submit"
-              className="w-56 focus:outline-none text-white bg-green-700 hover:bg-green-800
-             focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5
-              me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-            >
-              Calculer Moyenne
-            </button>
-            <div className="relative">
-              <input
-                type="text"
-                id="disabled_outlined"
-                className="block px-2.5 pb-2.5 pt-4 w-full text-xl text-gray-900 bg-transparent
-              rounded-lg border-1 border-gray-300 appearance-none dark:text-white
-              focus:outline-none focus:ring-0
-            focus:border-blue-600 peer"
-                placeholder=" "
-                disabled
-              />
-              <label
-                htmlFor="disabled_outlined"
-                className="absolute text-xl text-gray-400 duration-300 transform -translate-y-4
-              scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600
-              peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-              peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4
-              start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-              >
-                Votre Moyenne est : <p className="text-black">{moyenne}</p>
-              </label>
-            </div>
-          </div>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center justify-center  md:justify-normal">
           <InputFields
             title={"Logique formelle"}
             type={"TD"}
@@ -272,8 +245,39 @@ export default function LSIP1() {
             err={err}
             onChange={handleNoteChange}
           />
+          <div className="flex flex-col items-center  w-96  p-5">
+            <button
+              type="submit"
+              className="w-56 focus:outline-none text-white bg-green-700 hover:bg-green-800
+             focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5
+              me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            >
+              Calculer Moyenne
+            </button>
+            <div className="relative">
+              <input
+                type="text"
+                id="disabled_outlined"
+                className="block px-2.5 pb-2.5 pt-4 w-full text-xl text-gray-900 bg-transparent
+                rounded-lg border-1 border-gray-300 appearance-none dark:text-white
+                focus:outline-none focus:ring-0
+              focus:border-blue-600 peer"
+                placeholder=" "
+                disabled
+              />
+              <label
+                htmlFor="disabled_outlined"
+                className="absolute text-xl text-gray-400 duration-300 transform -translate-y-4
+                scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600
+              peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+                peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4
+                start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+              >
+                Votre Moyenne est : <p className="text-black">{moyenne}</p>
+              </label>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col "></div>
       </form>
     </section>
   );

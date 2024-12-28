@@ -4,7 +4,7 @@ interface InputFieldsProps {
   title: string;
   type: string;
   err: string[];
-  onChange: (value: string) => void;
+  onChange: (matiere: string, value: string) => void;
 }
 
 export default function InputFields({
@@ -16,13 +16,15 @@ export default function InputFields({
   //* handle changing input value
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    onChange(value);
+    const matiere = title + type;
+    onChange(matiere, value);
   };
 
   console.log(" child err = ", err); //!debug
-  
+
   //div className
-  let classDiv = "flex flex-col md:ml-10 border p-2 rounded-lg mb-2 w-fit ";
+  let classDiv =
+    "flex flex-col items-center justifiy-center md:ml-10 border border-gray-300 p-2 rounded-lg mb-10 w-80 md:w-fit";
 
   // Find the error message corresponding to the title
   const errorMessage = Array.isArray(err) && err[0] === title ? err[1] : "";
@@ -35,7 +37,7 @@ export default function InputFields({
     <div className={classDiv}>
       <label
         htmlFor={title}
-        className="block mb-3 text-md font-medium text-gray-900 "
+        className="block mb-3 text-md font-medium text-gray-900"
       >
         {title}
       </label>
@@ -52,7 +54,7 @@ export default function InputFields({
           id={title + type}
           name={title + type}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm
-          rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5"
+          rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-96 p-2.5"
           onChange={handleChange}
         />
       </div>
@@ -68,7 +70,7 @@ export default function InputFields({
           id={title + "DS"}
           name={title + "DS"}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm
-          rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5"
+          rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-96 p-2.5"
           onChange={handleChange}
         />
       </div>
@@ -84,7 +86,7 @@ export default function InputFields({
           id={title + "EX"}
           name={title + "EX"}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm
-          rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5"
+          rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-96 p-2.5"
           onChange={handleChange}
         />
       </div>
