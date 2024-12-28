@@ -1,11 +1,38 @@
+import React from "react";
+
 interface InputFieldsProps {
   title: string;
   type: string;
+  err: string[];
+  onChange: (value: string) => void;
 }
 
-export default function InputFields({ title, type }: InputFieldsProps) {
+export default function InputFields({
+  title,
+  type,
+  err,
+  onChange,
+}: InputFieldsProps) {
+  //* handle changing input value
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    onChange(value);
+  };
+
+  console.log(" child err = ", err); //!debug
+  
+  //div className
+  let classDiv = "flex flex-col md:ml-10 border p-2 rounded-lg mb-2 w-fit ";
+
+  // Find the error message corresponding to the title
+  const errorMessage = Array.isArray(err) && err[0] === title ? err[1] : "";
+
+  // check if there is an errorMessage and change the border color
+  classDiv = errorMessage != "" ? classDiv + "border border-red-400" : classDiv;
+
+  console.log("errorMessage  = ", errorMessage); //!debug
   return (
-    <div className="flex flex-col md:ml-10 border p-2 rounded-lg mb-2 w-fit ">
+    <div className={classDiv}>
       <label
         htmlFor={title}
         className="block mb-3 text-md font-medium text-gray-900 "
@@ -26,6 +53,7 @@ export default function InputFields({ title, type }: InputFieldsProps) {
           name={title + type}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm
           rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5"
+          onChange={handleChange}
         />
       </div>
       <div className="mb-5">
@@ -41,6 +69,7 @@ export default function InputFields({ title, type }: InputFieldsProps) {
           name={title + "DS"}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm
           rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5"
+          onChange={handleChange}
         />
       </div>
       <div className="mb-5">
@@ -56,8 +85,14 @@ export default function InputFields({ title, type }: InputFieldsProps) {
           name={title + "EX"}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm
           rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5"
+          onChange={handleChange}
         />
       </div>
+      {errorMessage && (
+        <label htmlFor="" className="text-red-500 text-sm">
+          {errorMessage}
+        </label>
+      )}
     </div>
   );
 }

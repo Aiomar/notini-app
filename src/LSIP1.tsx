@@ -1,8 +1,16 @@
-import InputFields from "./component/InputFields";
 import React, { useRef, useState } from "react";
+import InputFields from "./component/InputFields";
 
 export default function LSIP1() {
   const [moyenne, setMoyenne] = useState("");
+  const [err, setErr] = useState(["", ""]);
+  //* handle note changing to correct value | remove the error
+
+  const handleNoteChange = (value: string) => {
+    if (parseFloat(value) >= 0 && parseFloat(value) <= 20) {
+      setErr(["", ""]);
+    }
+  };
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -23,12 +31,19 @@ export default function LSIP1() {
 
       // verifiy if the input field is empty | dispence dans une matiere
       if (note != "" && (parseFloat(note) < 0 || parseFloat(note) > 20)) {
-        alert("le champs " + matiere + " doit etre entre 0 et 20");
+        //* setting and error if the condition 0<note<20 is not respected
+        setErr([
+          matiere.substring(0, matiere.length - 2), // send the matiere name without DS |TD| EX : AlgebreDS => Algebre
+          "le note de : " + matiere + " doit etre entre 0 et 20",
+        ]);
+
+        console.log("parent err :", err); //!debug
+
         return;
       }
     });
 
-    // create a list that holds matier that are empty || we dont need to calculate empty matiere fields
+    //* create a list that holds matier that are empty || we dont need to calculate empty matiere fields
     const listMat: [string] = [""];
 
     // verifiy wich input field is empty
@@ -37,7 +52,7 @@ export default function LSIP1() {
       const note: string = value.toString();
 
       //* data Validation
-      // verifiy if the input field is empty | dispence dans une matiere
+      // verifiy if the input field is empty then add it to listMat Array
       if (!note || note === "") {
         if (!listMat.includes(matiere)) {
           listMat.push(matiere);
@@ -161,20 +176,49 @@ export default function LSIP1() {
         className="flex flex-row  p-5 w-full"
       >
         <div className="flex flex-col ">
-          <InputFields title={"Algebre"} type={"TD"} />
-          <InputFields title={"Analyse"} type={"TD"} />
+          <InputFields
+            title={"Algebre"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
+          <InputFields
+            title={"Analyse"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
           <InputFields
             title={"Algorithmique et structure de données"}
             type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
           />
-          <InputFields title={"Techniques de communication 1"} type={"TD"} />
+          <InputFields
+            title={"Techniques de communication 1"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
         </div>
         <div className="flex flex-col">
-          <InputFields title={"Atelier programmation 1"} type={"TD"} />
-          <InputFields title={"Système d'exploitation 1"} type={"TD"} />
+          <InputFields
+            title={"Atelier programmation 1"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
+          <InputFields
+            title={"Système d'exploitation 1"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
           <InputFields
             title={"Systèmes Logiques & Architecture des ordinateurs"}
             type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
           />
           <div className="flex flex-col items-center  w-96 ml-5 p-5">
             <button
@@ -210,9 +254,24 @@ export default function LSIP1() {
           </div>
         </div>
         <div className="flex flex-col">
-          <InputFields title={"Logique formelle"} type={"TD"} />
-          <InputFields title={"Technologies Multimédias"} type={"TD"} />
-          <InputFields title={"Anglais 1"} type={"TD"} />
+          <InputFields
+            title={"Logique formelle"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
+          <InputFields
+            title={"Technologies Multimédias"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
+          <InputFields
+            title={"Anglais 1"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
         </div>
         <div className="flex flex-col "></div>
       </form>

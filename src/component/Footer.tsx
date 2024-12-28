@@ -23,7 +23,7 @@ export default function Footer() {
                     className="hover:underline"
                     target="_blank"
                   >
-                    isigk
+                    Computer Science - GLSI - Révision
                   </a>
                 </li>
                 <li>
@@ -33,7 +33,7 @@ export default function Footer() {
             </div>
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Follow me
+                About
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
