@@ -57,7 +57,7 @@ function App() {
           }}
         >
           {location === "LSI" ? (
-            <article id="LSI" className="flex flex-col p-0 ">
+            <article className="flex flex-col p-0 ">
               <label htmlFor="Form" className="text-xl text-center mt-3 mb-5">
                 1 ére License SI
               </label>
@@ -65,7 +65,7 @@ function App() {
               {activeB1 ? <Lsip1 /> : <Lsip2 />}
             </article>
           ) : (
-            <article id="LISI" className="flex flex-col p-0 ">
+            <article className="flex flex-col p-0 ">
               <label htmlFor="Form" className="text-xl text-center mt-3 mb-5">
                 1 ére License ISI
               </label>

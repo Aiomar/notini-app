@@ -8,6 +8,7 @@ interface NavProps {
   onUpdateLocation: (newLocation: string) => void;
   updateOpenState: () => void;
 }
+
 export default function Nav({
   currentLocation,
   onUpdateLocation,
@@ -29,8 +30,8 @@ export default function Nav({
   }, [currentLocation]);
 
   return (
-    <nav className="flex items-center justify-center bg-white border-gray-200 dark:bg-gray-900 w-full">
-      <div className="flex flex-wrap items-center justify-between mx-auto ">
+    <nav className="flex md:items-center justify-center bg-white border-gray-200 dark:bg-gray-900 w-full">
+      <div className="flex flex-wrap md:items-center justify-between mx-auto ">
         <div
           className={
             source === "Header"
@@ -57,7 +58,7 @@ export default function Nav({
                 aria-current="page"
                 onClick={() => onUpdateLocation("LSI")}
               >
-                LSI
+                <button onClick={updateOpenState}>LSI</button>
               </a>
             </li>
             <li>
@@ -70,7 +71,7 @@ export default function Nav({
                 }
                 onClick={() => onUpdateLocation("LISI")}
               >
-                LISI
+                <button onClick={updateOpenState}>LISI</button>
               </a>
             </li>
             <li>
