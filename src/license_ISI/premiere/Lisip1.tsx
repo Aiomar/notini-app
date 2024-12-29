@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import InputFields from "./component/InputFields";
+import InputFields from "../../component/InputFields";
 
-export default function LSIP1() {
+export default function Lisip1() {
   const [moyenne, setMoyenne] = useState("");
   const [err, setErr] = useState(["", ""]);
   //* handle note changing to correct value | remove the error
@@ -79,12 +79,12 @@ export default function LSIP1() {
     const coefLsiP1 = {
       Algebre: 1.5,
       Analyse: 1.5,
-      "Algorithmique et structure de données": 2,
-      "Atelier programmation 1": 1.5,
-      "Système d'exploitation 1": 1.5,
-      "Systèmes Logiques & Architecture des ordinateurs": 2,
-      "Logique formelle": 1.5,
-      "Technologies Multimédias": 1.5,
+      "Electricité-Electronique": 2,
+      "Onde et Propagation": 1,
+      "Système d'exploitation 1": 2,
+      "Systèmes Logiques": 1.5,
+      "Algorithmique  et structure des données": 2,
+      "Atelier Programmation 1": 1.5,
       "Anglais 1": 1,
       "Techniques de communication 1": 1,
     };
@@ -222,7 +222,7 @@ export default function LSIP1() {
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Systèmes Logiques & Architecture des ordinateurs"}
+            title={"Systèmes Logiques"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
@@ -230,13 +230,13 @@ export default function LSIP1() {
         </div>
         <div className="flex flex-col items-center justify-center  md:justify-normal">
           <InputFields
-            title={"Logique formelle"}
-            type={"TD"}
+            title={"Electricité-Electronique"}
+            type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Technologies Multimédias"}
+            title={"Onde et Propagation"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}

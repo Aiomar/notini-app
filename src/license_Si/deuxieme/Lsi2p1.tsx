@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import InputFields from "./component/InputFields";
+import InputFields from "../../component/InputFields";
 
-export default function Lsip2() {
+export default function Lsi2p1() {
   const [moyenne, setMoyenne] = useState("");
   const [err, setErr] = useState(["", ""]);
   //* handle note changing to correct value | remove the error
@@ -78,17 +78,17 @@ export default function Lsip2() {
 
     //* Object list of  matieres | coefficient of License SI P1
     const coefLsiP2 = {
-      "Algebre 2": 1.5,
-      "Analyse 2": 1.5,
-      "Algoritmique, structure de données et complexité": 1.5,
-      "Atelier programmation 2": 1,
-      "Programmation Python": 1,
-      "Système d'exploitation 2": 1.5,
-      "Fondements des réseaux": 2,
-      "Fondements des bases de données": 2,
-      "Anglais 2": 1,
-      "Techniques de communication 2": 1,
-      "Culture et Compétences Numériques": 1,
+      "Probabilité et statistique": 2,
+      "Théorie des langages et des Automates": 1,
+      "Graphes et optimisation ": 1,
+      "Conception des Systèmes d'Information": 1.5,
+      "Programmation Java": 2,
+      "Ingénierie des Bases de Données": 1.5,
+      "Services des Réseaux ": 1,
+      "Anglais 3": 1,
+      "Gestion d'entreprise": 1,
+      "C++": 1.5,
+      "Electricité-Electronique": 1.5,
     };
 
     // calcule total de coefficent
@@ -185,25 +185,25 @@ export default function Lsip2() {
       >
         <div className="flex flex-col items-center justify-center md:justify-normal">
           <InputFields
-            title={"Algebre 2"}
+            title={"Probabilité et statistique"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Analyse 2"}
+            title={"Théorie des langages et des Automates "}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Algoritmique, structure de données et complexité"}
-            type={"TD"}
+            title={"Graphes et optimisation "}
+            type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Techniques de communication 2"}
+            title={"Conception des Systèmes d'Information  "}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
@@ -211,25 +211,31 @@ export default function Lsip2() {
         </div>
         <div className="flex flex-col items-center justify-center md:justify-normal">
           <InputFields
-            title={"Atelier programmation 2"}
+            title={"Programmation Java"}
             type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Système d'exploitation 2"}
+            title={"Ingénierie des Bases de Données"}
             type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Fondements des réseaux"}
+            title={"Services des Réseaux "}
             type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Programmation Python"}
+            title={"Anglais 3"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
+          <InputFields
+            title={"Gestion d'entreprise"}
             type={"TP"}
             err={err}
             onChange={handleNoteChange}
@@ -237,20 +243,14 @@ export default function Lsip2() {
         </div>
         <div className="flex flex-col items-center justify-center  md:justify-normal">
           <InputFields
-            title={"Fondements des bases de données"}
-            type={"TD"}
-            err={err}
-            onChange={handleNoteChange}
-          />
-          <InputFields
-            title={"Culture et Compétences Numériques"}
+            title={"C++"}
             type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Anglais 2"}
-            type={"TD"}
+            title={"Electricité-Electronique"}
+            type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
