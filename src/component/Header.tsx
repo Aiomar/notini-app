@@ -48,7 +48,7 @@ export default function Header({
         <a href="" className="flex items-center">
           <img src="/logo.svg" className="h-10 rounded-full" alt="" />
           <span className="ml-2 self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Notini Testing{" "}
+            Notini
           </span>
         </a>
       </div>
