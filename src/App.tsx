@@ -1,4 +1,4 @@
-import LSIP1 from "./LSIP1";
+import LSIP1 from "./Lsip1";
 import Footer from "./component/Footer";
 import Header from "./component/Header";
 

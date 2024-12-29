@@ -30,7 +30,8 @@ export default function InputFields({
   const errorMessage = Array.isArray(err) && err[0] === title ? err[1] : "";
 
   // check if there is an errorMessage and change the border color
-  classDiv = errorMessage != "" ? classDiv + "border border-red-400" : classDiv;
+  classDiv =
+    errorMessage != "" ? classDiv + "border border-red-400 md:w-fit" : classDiv;
 
   console.log("errorMessage  = ", errorMessage); //!debug
   return (
