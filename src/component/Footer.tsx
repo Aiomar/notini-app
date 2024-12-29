@@ -11,7 +11,7 @@ export default function Footer() {
                 alt="Notini Logo"
               />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                Notini Testing {" "}
+                Notini Testing{" "}
               </span>
             </a>
           </div>
@@ -31,7 +31,12 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="" className="hover:underline"></a>
+                  <a
+                    href="https://isigk.rnu.tn/fra/s2467/pages/403/Computer-Engineering-Syst%C3%A8mes-embarqu%C3%A9s-et-IoT_R%C3%A9vision"
+                    className="hover:underline"
+                  >
+                    Computer Engineering-Systèmes embarqués et IoT_Révision
+                  </a>
                 </li>
               </ul>
             </div>
