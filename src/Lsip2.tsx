@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import InputFields from "./component/InputFields";
 
-export default function LSIP1() {
+export default function Lsip2() {
   const [moyenne, setMoyenne] = useState("");
   const [err, setErr] = useState(["", ""]);
   //* handle note changing to correct value | remove the error
@@ -58,6 +58,7 @@ export default function LSIP1() {
     // verifiy wich input field is empty
     formData.forEach((value, key) => {
       const matiere: string = key.substring(0, key.length - 2);
+      console.log(matiere); //!debug
       const note: string = value.toString();
 
       //* data Validation
@@ -76,33 +77,33 @@ export default function LSIP1() {
     });
 
     //* Object list of  matieres | coefficient of License SI P1
-    const coefLsiP1 = {
-      Algebre: 1.5,
-      Analyse: 1.5,
-      "Algorithmique et structure de données": 2,
-      "Atelier programmation 1": 1.5,
-      "Système d'exploitation 1": 1.5,
-      "Systèmes Logiques & Architecture des ordinateurs": 2,
-      "Logique formelle": 1.5,
-      "Technologies Multimédias": 1.5,
-      "Anglais 1": 1,
-      "Techniques de communication 1": 1,
+    const coefLsiP2 = {
+      "Algebre 2": 1.5,
+      "Analyse 2": 1.5,
+      "Algoritmique, structure de données et complexité": 1.5,
+      "Atelier programmation 2": 1,
+      "Programmation Python": 1,
+      "Système d'exploitation 2": 1.5,
+      "Fondements des réseaux": 2,
+      "Fondements des bases de données": 2,
+      "Anglais 2": 1,
+      "Techniques de communication 2": 1,
+      "Culture et Compétences Numériques": 1,
     };
 
-    //* Calcule total de coefficent
+    // calcule total de coefficent
     let totalCoeff = 0;
-    for (const [matiere, coef] of Object.entries(coefLsiP1)) {
-      // Check if the subject is in the list of negligible subjects | These subjects do not require a grade calculation.
+    for (const [matiere, coef] of Object.entries(coefLsiP2)) {
+      //* verifier si le matiere est dans le liste de matiere negligable | this type of matieres does'nt need a moy calc
       if (listMat.includes(matiere)) {
         continue;
       }
-      // add the coef if the matiere is valid (not in negligible list)
       totalCoeff += coef;
     }
 
     console.log("total coefficient = ", totalCoeff); //!debug
 
-    //* Func to Calcule moyenne d une matiere
+    //calcule moyenne d une matiere
     const calcMoyMatiere = (
       TD: number,
       DS: number,
@@ -112,7 +113,7 @@ export default function LSIP1() {
       return ((TD * 10 + DS * 20 + EX * 70) / 100) * coef;
     };
 
-    // Array to save moyenne d une note
+    // array to save moyenne d une note
     const moyenneMatieres: [string, number][] = [];
 
     // Convert object into an array of entries
@@ -125,14 +126,14 @@ export default function LSIP1() {
       //* extraire le nom de matiere en effacent le  2 char finale du ch AlgebreTD => Algebre | AnalyseTD => Analyse
       const nomMatiere = matiere[0][0].substring(0, matiere[0][0].length - 2);
 
-      // Check if the subject is in the list of negligible subjects
+      // verifier si le le matiere est dans la liste des matiere niglegable
       if (listMat.includes(nomMatiere)) {
         continue;
       }
 
       //* determiner la coefficient d une matiere | parcours sur l objet coefLsiP1
       let coefficient = 1;
-      for (const [mat, coeff] of Object.entries(coefLsiP1)) {
+      for (const [mat, coeff] of Object.entries(coefLsiP2)) {
         if (nomMatiere === mat) {
           coefficient = coeff;
           break;
@@ -154,7 +155,7 @@ export default function LSIP1() {
     //* calcule totale des moyenne
     let totalMoy = 0;
     for (let i = 0; i < moyenneMatieres.length; i++) {
-      //* Check if the subject is in the list of negligible subjects
+      // verifier si le le matiere est dans la liste des matiere niglegable
       if (listMat.includes(moyenneMatieres[i][0])) {
         continue;
       }
@@ -184,25 +185,25 @@ export default function LSIP1() {
       >
         <div className="flex flex-col items-center justify-center md:justify-normal">
           <InputFields
-            title={"Algebre"}
+            title={"Algebre 2"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Analyse"}
+            title={"Analyse 2"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Algorithmique et structure de données"}
+            title={"Algoritmique, structure de données et complexité"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Techniques de communication 1"}
+            title={"Techniques de communication 2"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
@@ -210,39 +211,45 @@ export default function LSIP1() {
         </div>
         <div className="flex flex-col items-center justify-center md:justify-normal">
           <InputFields
-            title={"Atelier programmation 1"}
-            type={"TD"}
+            title={"Atelier programmation 2"}
+            type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Système d'exploitation 1"}
-            type={"TD"}
+            title={"Système d'exploitation 2"}
+            type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Systèmes Logiques & Architecture des ordinateurs"}
-            type={"TD"}
+            title={"Fondements des réseaux"}
+            type={"TP"}
+            err={err}
+            onChange={handleNoteChange}
+          />
+          <InputFields
+            title={"Programmation Python"}
+            type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
         </div>
         <div className="flex flex-col items-center justify-center  md:justify-normal">
           <InputFields
-            title={"Logique formelle"}
+            title={"Fondements des bases de données"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Technologies Multimédias"}
-            type={"TD"}
+            title={"Culture et Compétences Numériques"}
+            type={"TP"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Anglais 1"}
+            title={"Anglais 2"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
