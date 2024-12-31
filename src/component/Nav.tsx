@@ -58,7 +58,10 @@ export default function Nav({
                 aria-current="page"
                 onClick={() => onUpdateLocation("LSI")}
               >
-                <button onClick={updateOpenState}>LSI</button>
+                <p className="hidden md:block">LSI</p>
+                <button onClick={updateOpenState} className="md:hidden">
+                  LSI
+                </button>
               </a>
             </li>
             <li>
@@ -71,7 +74,10 @@ export default function Nav({
                 }
                 onClick={() => onUpdateLocation("LISI")}
               >
-                <button onClick={updateOpenState}>LISI</button>
+                <p className="hidden md:block">LISI</p>
+                <button onClick={updateOpenState} className="md:hidden">
+                  LISI
+                </button>
               </a>
             </li>
             <li>
