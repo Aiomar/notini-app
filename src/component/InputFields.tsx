@@ -1,5 +1,7 @@
+//* react hooks
 import React from "react";
 
+//* prop declaration
 interface InputFieldsProps {
   title: string;
   type: string;
@@ -7,6 +9,8 @@ interface InputFieldsProps {
   onChange: (matiere: string, value: string) => void;
 }
 
+//*descripiton*/
+//* this component is a 3 input fileds that represents the 3 notes for a subject(matiere)
 export default function InputFields({
   title,
   type,
@@ -22,7 +26,7 @@ export default function InputFields({
 
   console.log(" child err = ", err); //!debug
 
-  //div className
+  //div className with tailwindcss
   let classDiv =
     "flex flex-col items-center justifiy-center md:ml-10 border border-gray-300 p-2 rounded-lg mb-10 w-80 md:w-fit";
 

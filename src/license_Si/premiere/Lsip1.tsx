@@ -7,12 +7,12 @@ export default function LSIP1() {
   //* handle note changing to correct value | remove the error
 
   const handleNoteChange = (matiere: string, value: string) => {
-    if (value != "" && parseFloat(value) >= 0 && parseFloat(value) <= 20) {
+    if (value == "" || (parseFloat(value) >= 0 && parseFloat(value) <= 20)) {
       setErr(["", ""]);
     } else {
       setErr([
         matiere.substring(0, matiere.length - 2), // send the matiere name without DS |TD| EX : AlgebreDS => Algebre
-        "Le note de : " + matiere + " doit etre entre 0 et 20",
+        "Le note de " + matiere + " doit etre entre 0 et 20",
       ]);
     }
   };
@@ -168,7 +168,7 @@ export default function LSIP1() {
 
     console.log(data); //!debug
 
-    //* calcule de moyenne
+    //*** Calcule de moyenne
     const moy = totalMoy / totalCoeff;
     setMoyenne(moy ? moy.toString().substring(0, 5) : "0");
 
@@ -247,35 +247,25 @@ export default function LSIP1() {
             err={err}
             onChange={handleNoteChange}
           />
-          <div className="flex flex-col items-center  w-96  p-5">
+          <div className="flex flex-col items-center p-5">
             <button
               type="submit"
               className="w-56 focus:outline-none text-white bg-green-700 hover:bg-green-800
              focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5
-              me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              me-2 mb-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
             >
               Calculer Moyenne
             </button>
-            <div className="relative">
-              <input
-                type="text"
-                id="disabled_outlined"
-                className="block px-2.5 pb-2.5 pt-4 w-full text-xl text-gray-900 bg-transparent
-                rounded-lg border-1 border-gray-300 appearance-none dark:text-white
-                focus:outline-none focus:ring-0
-              focus:border-blue-600 peer"
-                placeholder=" "
-                disabled
-              />
-              <label
-                htmlFor="disabled_outlined"
-                className="absolute text-xl text-gray-400 duration-300 transform -translate-y-4
-                scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600
-              peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-                peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4
-                start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-              >
-                Votre Moyenne est : <p className="text-black">{moyenne}</p>
+            <div className="flex flex-col w-56">
+              <label className="text-lg text-gray-400">
+                {err[1] !== "" ? (
+                  <p className="text-red-500">Erreur : {err[1].toString()}</p>
+                ) : (
+                  <div className="flex flex-row ml-4">
+                    <p> Votre Moyenne est :</p>
+                    <p className="text-black ml-1">{moyenne}</p>
+                  </div>
+                )}
               </label>
             </div>
           </div>
@@ -284,3 +274,6 @@ export default function LSIP1() {
     </section>
   );
 }
+//todo :
+/*prevent the moyenne calculation from happening when the user changes 
+another input field unless all inputs are valid or empty*/
