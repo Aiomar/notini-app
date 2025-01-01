@@ -56,6 +56,7 @@ export default function Nav({
                     : "block py-2 px-3 text-white  rounded md:bg-transparent md:hover:text-blue-500 md:p-0"
                 }
                 aria-current="page"
+                title="License Science Informatique"
                 onClick={() => onUpdateLocation("LSI")}
               >
                 <p className="hidden md:flex flex-row justify-center items-center">
@@ -111,6 +112,7 @@ export default function Nav({
                     ? "block py-2 px-3 rounded md:bg-transparent text-blue-500 md:p-0"
                     : "block py-2 px-3 text-white rounded md:bg-transparent md:hover:text-blue-500 md:p-0"
                 }
+                title="License Ingeneurie Systeme Informatique"
                 onClick={() => onUpdateLocation("LISI")}
               >
                 <p className="hidden md:flex flex-row justify-center items-center">
@@ -161,6 +163,7 @@ export default function Nav({
             <li>
               <a
                 href="#"
+                title="License Informatiques de Gestion"
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100
                   md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0
                   dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700

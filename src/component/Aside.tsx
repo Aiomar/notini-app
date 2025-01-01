@@ -13,7 +13,7 @@ export default function Aside({
   updateOpenState,
 }: asideProps) {
   return (
-    <aside className="flex mt-24 w-full h-screen z-10 fixed right-0 left-0">
+    <aside className="flex mt-24 w-full h-screen z-50 fixed right-0 left-0">
       <Nav
         currentLocation={currentLocation}
         onUpdateLocation={onUpdateLocation}

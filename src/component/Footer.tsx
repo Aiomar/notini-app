@@ -47,12 +47,20 @@ export default function Footer() {
                     Computer Science - GLSI - Révision
                   </a>
                 </li>
-                <li>
+                <li className="mb-5">
                   <a
                     href="https://isigk.rnu.tn/fra/s2467/pages/403/Computer-Engineering-Syst%C3%A8mes-embarqu%C3%A9s-et-IoT_R%C3%A9vision"
                     className="hover:underline"
                   >
                     Computer Engineering-Systèmes embarqués et IoT_Révision
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://isigk.rnu.tn/fra/s2467/pages/401/Business-Computing-BI_R%C3%A9vision"
+                    className="hover:underline"
+                  >
+                    Business-Computing-BI_revision{" "}
                   </a>
                 </li>
               </ul>
