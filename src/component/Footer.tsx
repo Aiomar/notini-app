@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
     <footer className="w-full bg-white dark:bg-gray-900 ">
-      <div className="mx-auto w-full p-4 py-6 lg:py-8">
-        <div className="md:flex md:justify-between w-full">
+      <div className=" mx-auto w-full p-4 py-6 lg:py-8">
+        <div className="md:grid md:grid-cols-2 w-full">
           <div className="mb-6 md:mb-0">
             <a href="" className="flex items-center">
               <img
@@ -15,9 +15,26 @@ export default function Footer() {
               </span>
             </a>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
+          <div className="grid grid-cols-3  gap-5">
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2
+                className="flex flex-row items-center mb-6 text-sm font-semibold text-gray-900 uppercase
+               dark:text-white hover:text-blue-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6 mr-1"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                  />
+                </svg>
                 Recources
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
@@ -41,7 +58,24 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2
+                className="flex flex-row items-center mb-6 text-sm font-semibold text-gray-900 uppercase
+               dark:text-white hover:text-blue-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6 mr-1"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                  />
+                </svg>
                 About
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
@@ -65,6 +99,39 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
+            <div>
+              <h2
+                className="flex flex-row items-center mb-6 text-sm font-semibold text-gray-900 uppercase
+               dark:text-white hover:text-red-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6 mr-1"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z"
+                  />
+                </svg>
+                Report a Bug
+              </h2>
+              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                <li className="mb-4">
+                  <a
+                    href="https://github.com/Aiomar/notini-app/issues"
+                    className="hover:underline"
+                    target="_blank"
+                  >
+                    github repository
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
@@ -81,8 +148,9 @@ export default function Footer() {
           </span>
           <div className="flex mt-4 sm:justify-center sm:mt-0">
             <a
-              href="#"
+              href="https://www.facebook.com/omar.aidi.12139"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              target="_blank"
             >
               <svg
                 className="w-4 h-4"
@@ -100,7 +168,7 @@ export default function Footer() {
               <span className="sr-only">Facebook page</span>
             </a>
             <a
-              href="#"
+              href="https://discord.gg/dzWm6DCztZ"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
               target="_blank"
             >
@@ -116,7 +184,7 @@ export default function Footer() {
               <span className="sr-only">Discord community</span>
             </a>
             <a
-              href="#"
+              href="https://github.com/Aiomar"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
               target="_blank"
             >
