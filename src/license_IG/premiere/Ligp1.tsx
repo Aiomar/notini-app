@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import InputFields from "../../component/InputFields";
 
-export default function LSIP1() {
+export default function Ligp1() {
   const [moyenne, setMoyenne] = useState("");
   const [err, setErr] = useState(["", ""]);
   //* handle note changing to correct value | remove the error

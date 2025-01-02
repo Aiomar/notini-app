@@ -1,5 +1,6 @@
 //* Hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 //* Components
 import Lsip1 from "./license_Si/premiere/Lsip1";
 import Lsip2 from "./license_Si/premiere/Lsip2";
@@ -26,15 +27,15 @@ function App() {
     setIsOpen(!isopen);
   };
 
-  //* LSI Section
   //* Handle wich semestre will be shown
   const [activeB1, setActiveB1] = useState(true);
   // call this function from Buttons component to set semestre 1 Active
   const active = (state: boolean) => {
     setActiveB1(state);
   };
-
-  //* LISI Section
+  useEffect(() => {
+    active(true);
+  }, [location]);
 
   return (
     <div className="w-full flex flex-col items-center p-0 m-0 ">
@@ -57,7 +58,7 @@ function App() {
             setIsOpen(false);
           }}
         >
-          {location === "LSI" ? (
+          {location === "LSI" && (
             <article className="flex flex-col p-0 ">
               <label htmlFor="Form" className="text-xl text-center mt-3 mb-5">
                 1 ére License SI
@@ -65,7 +66,8 @@ function App() {
               <Buttons onActivate={active} />
               {activeB1 ? <Lsip1 /> : <Lsip2 />}
             </article>
-          ) : location === "LISI" ? (
+          )}
+          {location === "LISI" && (
             <article className="flex flex-col p-0 ">
               <label htmlFor="Form" className="text-xl text-center mt-3 mb-5">
                 1 ére License ISI
@@ -73,7 +75,8 @@ function App() {
               <Buttons onActivate={active} />
               {activeB1 ? <Lisip1 /> : <Lisip2 />}
             </article>
-          ) : (
+          )}
+          {location === "LIG" && (
             <article className="flex flex-col p-0 ">
               <label htmlFor="Form" className="text-xl text-center mt-3 mb-5">
                 1 ére License IG

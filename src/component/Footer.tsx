@@ -11,7 +11,7 @@ export default function Footer() {
                 alt="Notini Logo"
               />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                Notini <p className="text-sm text-red-300">v0.5 beta</p>
+                Notini
               </span>
             </a>
           </div>
