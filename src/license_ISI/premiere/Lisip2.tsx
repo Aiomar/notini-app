@@ -76,7 +76,7 @@ export default function Lisip2() {
     });
 
     //* Object list of  matieres | coefficient of License SI P1
-    const coefLsiP1 = {
+    const coeffList = {
       "Algebre 2": 1,
       "Analyse 2": 1,
       "Fonctions Electronique": 1,
@@ -93,7 +93,7 @@ export default function Lisip2() {
 
     //* Calcule total de coefficent
     let totalCoeff = 0;
-    for (const [matiere, coef] of Object.entries(coefLsiP1)) {
+    for (const [matiere, coef] of Object.entries(coeffList)) {
       // Check if the subject is in the list of negligible subjects | These subjects do not require a grade calculation.
       if (listMat.includes(matiere)) {
         continue;
@@ -132,9 +132,9 @@ export default function Lisip2() {
         continue;
       }
 
-      //* determiner la coefficient d une matiere | parcours sur l objet coefLsiP1
+      //* determiner la coefficient d une matiere | parcours sur l objet coeffList
       let coefficient = 1;
-      for (const [mat, coeff] of Object.entries(coefLsiP1)) {
+      for (const [mat, coeff] of Object.entries(coeffList)) {
         if (nomMatiere === mat) {
           coefficient = coeff;
           break;

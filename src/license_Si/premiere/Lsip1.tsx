@@ -76,7 +76,7 @@ export default function LSIP1() {
     });
 
     //* Object list of  matieres | coefficient of License SI P1
-    const coefLsiP1 = {
+    const coeffList = {
       Algebre: 1.5,
       Analyse: 1.5,
       "Algorithmique et structure de données": 2,
@@ -91,7 +91,7 @@ export default function LSIP1() {
 
     //* Calcule total de coefficent
     let totalCoeff = 0;
-    for (const [matiere, coef] of Object.entries(coefLsiP1)) {
+    for (const [matiere, coef] of Object.entries(coeffList)) {
       // Check if the subject is in the list of negligible subjects | These subjects do not require a grade calculation.
       if (listMat.includes(matiere)) {
         continue;
@@ -130,9 +130,9 @@ export default function LSIP1() {
         continue;
       }
 
-      //* determiner la coefficient d une matiere | parcours sur l objet coefLsiP1
+      //* determiner la coefficient d une matiere | parcours sur l objet coeffList
       let coefficient = 1;
-      for (const [mat, coeff] of Object.entries(coefLsiP1)) {
+      for (const [mat, coeff] of Object.entries(coeffList)) {
         if (nomMatiere === mat) {
           coefficient = coeff;
           break;

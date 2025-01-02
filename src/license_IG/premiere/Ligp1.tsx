@@ -76,7 +76,7 @@ export default function LSIP1() {
     });
 
     //* Object list of  matieres | coefficient of License IG P1
-    const coefLsiP1 = {
+    const coeffList = {
       "Algorithmique et structure de données": 3,
       "Système d'exploitation 1": 1,
       "Systèmes Logiques & Architecture des ordinateurs": 1,
@@ -86,12 +86,13 @@ export default function LSIP1() {
       "Comptabilité générale": 2,
       "Compétences Numériques": 1.5,
       IHM: 1,
-      "Techniques de communication 1": 1,
+      "Business Communication": 1,
+      "Unité Optionelle": 1,
     };
 
     //* Calcule total de coefficent
     let totalCoeff = 0;
-    for (const [matiere, coef] of Object.entries(coefLsiP1)) {
+    for (const [matiere, coef] of Object.entries(coeffList)) {
       // Check if the subject is in the list of negligible subjects | These subjects do not require a grade calculation.
       if (listMat.includes(matiere)) {
         continue;
@@ -130,9 +131,9 @@ export default function LSIP1() {
         continue;
       }
 
-      //* determiner la coefficient d une matiere | parcours sur l objet coefLsiP1
+      //* determiner la coefficient d une matiere | parcours sur l objet coeffList
       let coefficient = 1;
-      for (const [mat, coeff] of Object.entries(coefLsiP1)) {
+      for (const [mat, coeff] of Object.entries(coeffList)) {
         if (nomMatiere === mat) {
           coefficient = coeff;
           break;
@@ -184,33 +185,7 @@ export default function LSIP1() {
       >
         <div className="flex flex-col items-center justify-center md:justify-normal">
           <InputFields
-            title={"Algebre"}
-            type={"TD"}
-            err={err}
-            onChange={handleNoteChange}
-          />
-          <InputFields
-            title={"Analyse"}
-            type={"TD"}
-            err={err}
-            onChange={handleNoteChange}
-          />
-          <InputFields
             title={"Algorithmique et structure de données"}
-            type={"TD"}
-            err={err}
-            onChange={handleNoteChange}
-          />
-          <InputFields
-            title={"Techniques de communication 1"}
-            type={"TD"}
-            err={err}
-            onChange={handleNoteChange}
-          />
-        </div>
-        <div className="flex flex-col items-center justify-center md:justify-normal">
-          <InputFields
-            title={"Atelier programmation 1"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
@@ -227,22 +202,48 @@ export default function LSIP1() {
             err={err}
             onChange={handleNoteChange}
           />
+          <InputFields
+            title={"Statistiques et Probabilité"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
+        </div>
+        <div className="flex flex-col items-center justify-center md:justify-normal">
+          <InputFields
+            title={"Principe de gestion"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
+          <InputFields
+            title={"Système d'exploitation 1"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
+          <InputFields
+            title={"Comptabilité générale"}
+            type={"TD"}
+            err={err}
+            onChange={handleNoteChange}
+          />
         </div>
         <div className="flex flex-col items-center justify-center  md:justify-normal">
           <InputFields
-            title={"Logique formelle"}
+            title={"Compétences Numériques"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Technologies Multimédias"}
+            title={"IHM"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Anglais 1"}
+            title={"Unité Optionelle"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
@@ -274,6 +275,3 @@ export default function LSIP1() {
     </section>
   );
 }
-//todo :
-/*prevent the moyenne calculation from happening when the user changes 
-another input field unless all inputs are valid or empty*/

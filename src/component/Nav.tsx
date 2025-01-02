@@ -1,5 +1,6 @@
 //* React Hooks
 import { useState, useEffect } from "react";
+import Link from "./Link";
 
 //* prop types
 interface NavProps {
@@ -15,17 +16,26 @@ export default function Nav({
   source,
   updateOpenState,
 }: NavProps) {
-  //* handle anchor tag <a> activity state
+  //* handle the nav links activity state
   const [activeLSI, setActiveLSI] = useState(true);
   const [activeLISI, setActiveLISI] = useState(false);
+  const [activeLIG, setActiveLIG] = useState(false);
 
   useEffect(() => {
+    if (currentLocation === "LSI") {
+      setActiveLSI(true);
+      setActiveLISI(false);
+      setActiveLIG(false);
+    }
     if (currentLocation === "LISI") {
       setActiveLISI(true);
       setActiveLSI(false);
-    } else {
+      setActiveLIG(false);
+    }
+    if (currentLocation === "LIG") {
+      setActiveLIG(true);
       setActiveLISI(false);
-      setActiveLSI(true);
+      setActiveLSI(false);
     }
   }, [currentLocation]);
 
@@ -48,16 +58,12 @@ export default function Nav({
             }
           >
             <li onClick={() => updateOpenState}>
-              <a
-                href="#LSI"
-                className={
-                  activeLSI
-                    ? "block py-2 px-3  rounded md:bg-transparent text-blue-500 md:p-0"
-                    : "block py-2 px-3 text-white  rounded md:bg-transparent md:hover:text-blue-500 md:p-0"
-                }
-                aria-current="page"
+              <Link
                 title="License Science Informatique"
-                onClick={() => onUpdateLocation("LSI")}
+                href="#LSI"
+                isActive={activeLSI}
+                location="LSI"
+                onUpdateLocation={onUpdateLocation}
               >
                 <p className="hidden md:flex flex-row justify-center items-center">
                   <svg
@@ -102,18 +108,15 @@ export default function Nav({
                     License SI
                   </p>
                 </button>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#LISI"
-                className={
-                  activeLISI
-                    ? "block py-2 px-3 rounded md:bg-transparent text-blue-500 md:p-0"
-                    : "block py-2 px-3 text-white rounded md:bg-transparent md:hover:text-blue-500 md:p-0"
-                }
+              <Link
                 title="License Ingeneurie Systeme Informatique"
-                onClick={() => onUpdateLocation("LISI")}
+                href="#LISI"
+                isActive={activeLISI}
+                location="LISI"
+                onUpdateLocation={onUpdateLocation}
               >
                 <p className="hidden md:flex flex-row justify-center items-center">
                   <svg
@@ -158,16 +161,15 @@ export default function Nav({
                     License ISI
                   </p>
                 </button>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
                 title="License Informatiques de Gestion"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100
-                  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0
-                  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700
-                  dark:hover:text-white md:dark:hover:bg-transparent"
+                href="#LIG"
+                location="LIG"
+                isActive={activeLIG}
+                onUpdateLocation={onUpdateLocation}
               >
                 <p className="hidden md:flex md:flex-row justify-center items-center">
                   <svg
@@ -208,7 +210,7 @@ export default function Nav({
                     License IG
                   </p>
                 </button>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
