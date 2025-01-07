@@ -1,5 +1,8 @@
 import React, { useRef, useState } from "react";
+
+//* components
 import InputFields from "../../component/InputFields";
+import calcMoyMatiere from "../../utils/calcMoyMatiere";
 
 export default function Lisip2() {
   const [moyenne, setMoyenne] = useState("");
@@ -102,18 +105,6 @@ export default function Lisip2() {
       totalCoeff += coef;
     }
 
-    console.log("total coefficient = ", totalCoeff); //!debug
-
-    //* Func to Calcule moyenne d une matiere
-    const calcMoyMatiere = (
-      TD: number,
-      DS: number,
-      EX: number,
-      coef: number
-    ): number => {
-      return ((TD * 10 + DS * 20 + EX * 70) / 100) * coef;
-    };
-
     // Array to save moyenne d une note
     const moyenneMatieres: [string, number][] = [];
 
@@ -160,21 +151,12 @@ export default function Lisip2() {
       if (listMat.includes(moyenneMatieres[i][0])) {
         continue;
       }
-
       totalMoy += moyenneMatieres[i][1];
-
-      console.log(moyenneMatieres[i]); //!debug
     }
-
-    console.log("total des moyenne : ", totalMoy); //!debug
-
-    console.log(data); //!debug
 
     //* calcule de moyenne
     const moy = totalMoy / totalCoeff;
     setMoyenne(moy ? moy.toString().substring(0, 5) : "0");
-
-    console.log("liste des mat negligable : ", listMat); //! debug
   };
 
   return (

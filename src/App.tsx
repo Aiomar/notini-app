@@ -38,7 +38,7 @@ function App() {
   }, [location]);
 
   return (
-    <div className="w-full flex flex-col items-center p-0 m-0 ">
+    <div className="w-full flex flex-col items-center p-0 m-0">
       <Header
         currentLocation={location}
         onUpdateLocation={updateLocation}

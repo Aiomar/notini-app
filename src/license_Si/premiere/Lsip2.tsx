@@ -1,5 +1,9 @@
+//*React hooks
 import React, { useRef, useState } from "react";
+
+//* components
 import InputFields from "../../component/InputFields";
+import calcMoyMatiere from "../../utils/calcMoyMatiere";
 
 export default function Lsip2() {
   const [moyenne, setMoyenne] = useState("");
@@ -58,7 +62,6 @@ export default function Lsip2() {
     // verifiy wich input field is empty
     formData.forEach((value, key) => {
       const matiere: string = key.substring(0, key.length - 2);
-      console.log(matiere); //!debug
       const note: string = value.toString();
 
       //* data Validation
@@ -100,18 +103,6 @@ export default function Lsip2() {
       }
       totalCoeff += coef;
     }
-
-    console.log("total coefficient = ", totalCoeff); //!debug
-
-    //calcule moyenne d une matiere
-    const calcMoyMatiere = (
-      TD: number,
-      DS: number,
-      EX: number,
-      coef: number
-    ): number => {
-      return ((TD * 10 + DS * 20 + EX * 70) / 100) * coef;
-    };
 
     // array to save moyenne d une note
     const moyenneMatieres: [string, number][] = [];
@@ -161,19 +152,11 @@ export default function Lsip2() {
       }
 
       totalMoy += moyenneMatieres[i][1];
-
-      console.log(moyenneMatieres[i]); //!debug
     }
-
-    console.log("total des moyenne : ", totalMoy); //!debug
-
-    console.log(data); //!debug
 
     //* calcule de moyenne
     const moy = totalMoy / totalCoeff;
     setMoyenne(moy ? moy.toString().substring(0, 5) : "0");
-
-    console.log("liste des mat negligable : ", listMat); //! debug
   };
 
   return (

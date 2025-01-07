@@ -1,11 +1,15 @@
+//* react hooks
 import React, { useRef, useState } from "react";
+
+//* component
 import InputFields from "../../component/InputFields";
+import calcMoyMatiere from "../../utils/calcMoyMatiere";
 
 export default function Lisip1() {
   const [moyenne, setMoyenne] = useState("");
   const [err, setErr] = useState(["", ""]);
-  //* handle note changing to correct value | remove the error
 
+  //* handle note changing to correct value | remove the error
   const handleNoteChange = (matiere: string, value: string) => {
     if (value != "" && parseFloat(value) >= 0 && parseFloat(value) <= 20) {
       setErr(["", ""]);
@@ -76,41 +80,31 @@ export default function Lisip1() {
     });
 
     //* Object list of  matieres | coefficient of License SI P1
-    const coefLsiP1 = {
+    const coeffLisip1 = {
       Algebre: 1.5,
       Analyse: 1.5,
       "Electricité-Electronique": 2,
       "Onde et Propagation": 1,
-      "Système d'exploitation 1": 2,
+      "Systèmes d'exploitation 1": 2,
       "Systèmes Logiques": 1.5,
-      "Algorithmique  et structure des données": 2,
-      "Atelier Programmation 1": 1.5,
+      "Algorithmique et structure des données": 2,
+      "Atelier de Programmation 1": 1.5,
       "Anglais 1": 1,
       "Techniques de communication 1": 1,
     };
 
     //* Calcule total de coefficent
     let totalCoeff = 0;
-    for (const [matiere, coef] of Object.entries(coefLsiP1)) {
+    for (const [matiere, coef] of Object.entries(coeffLisip1)) {
       // Check if the subject is in the list of negligible subjects | These subjects do not require a grade calculation.
-      if (listMat.includes(matiere)) {
-        continue;
+      if (!listMat.includes(matiere)) {
+        // add the coef if the matiere is valid (not in negligible list)
+        totalCoeff += coef;
+        console.log("les cofficient du matiere calculable : ", matiere); //!debug
       }
-      // add the coef if the matiere is valid (not in negligible list)
-      totalCoeff += coef;
     }
 
     console.log("total coefficient = ", totalCoeff); //!debug
-
-    //* Func to Calcule moyenne d une matiere
-    const calcMoyMatiere = (
-      TD: number,
-      DS: number,
-      EX: number,
-      coef: number
-    ): number => {
-      return ((TD * 10 + DS * 20 + EX * 70) / 100) * coef;
-    };
 
     // Array to save moyenne d une note
     const moyenneMatieres: [string, number][] = [];
@@ -130,9 +124,9 @@ export default function Lisip1() {
         continue;
       }
 
-      //* determiner la coefficient d une matiere | parcours sur l objet coefLsiP1
+      //* determiner la coefficient d une matiere | parcours sur l objet coeffLisip1
       let coefficient = 1;
-      for (const [mat, coeff] of Object.entries(coefLsiP1)) {
+      for (const [mat, coeff] of Object.entries(coeffLisip1)) {
         if (nomMatiere === mat) {
           coefficient = coeff;
           break;
@@ -196,7 +190,7 @@ export default function Lisip1() {
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Algorithmique et structure de données"}
+            title={"Algorithmique et structure des données"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
@@ -210,13 +204,13 @@ export default function Lisip1() {
         </div>
         <div className="flex flex-col items-center justify-center md:justify-normal">
           <InputFields
-            title={"Atelier programmation 1"}
+            title={"Atelier de Programmation 1"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}
           />
           <InputFields
-            title={"Système d'exploitation 1"}
+            title={"Systèmes d'exploitation 1"}
             type={"TD"}
             err={err}
             onChange={handleNoteChange}

@@ -101,8 +101,6 @@ export default function Ligp1() {
       totalCoeff += coef;
     }
 
-    console.log("total coefficient = ", totalCoeff); //!debug
-
     //* Func to Calcule moyenne d une matiere
     const calcMoyMatiere = (
       TD: number,
@@ -161,19 +159,11 @@ export default function Ligp1() {
       }
 
       totalMoy += moyenneMatieres[i][1];
-
-      console.log(moyenneMatieres[i]); //!debug
     }
-
-    console.log("total des moyenne : ", totalMoy); //!debug
-
-    console.log(data); //!debug
 
     //*** Calcule de moyenne
     const moy = totalMoy / totalCoeff;
     setMoyenne(moy ? moy.toString().substring(0, 5) : "0");
-
-    console.log("liste des mat negligable : ", listMat); //! debug
   };
 
   return (
