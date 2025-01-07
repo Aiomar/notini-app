@@ -1,4 +1,4 @@
-//* Hooks
+//* React Hooks
 import { useEffect, useState } from "react";
 
 //* Components
@@ -13,7 +13,7 @@ import Footer from "./component/Footer";
 import Header from "./component/Header";
 import Aside from "./component/Aside";
 
-function App() {
+export default function App() {
   //* Handle wich location to show
   const [location, setLocation] = useState("LSI");
 
@@ -91,5 +91,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
